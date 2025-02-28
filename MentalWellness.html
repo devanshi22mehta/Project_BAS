@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"/>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="background-color:rgb(138, 165, 189);">
+    <section id="header">
+        <a href="#"><img src="images/logo.jpg" class="logo" alt=""></a>
+<!-- navbar -->
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a class="active" href="MentalWellness.html">Mindfullness</a></li>
+                <li><a href="CheckBMI.html">BMI</a></li>
+                <!-- <li><a href="Blog.html">Blog</a></li> -->
+                <li><a href="personalinformation.html">Profile</a></li>
+                <a href="Logout.html"><button class="normal">Logout</button></a>
+            </ul>
+        </div>
+    </section>
+<!-- banner -->
+    <section id="page-header" class="blog-header">
+        <h2>#Create Your Own Reality</h2>
+        <p>Positive self-talk creates a powerful attitude. Convert your negative thoughts into positive ones.!</p>
+    </section>
+
+
+<h2 id="h2text">Try a quick breathing exercise to ease your stress.</h2>
+    <section id="breathing">
+    <div class="circle-container">
+        <div class="circle" id="breathText">Breathe In</div>
+    </div>
+    </section>
+<!-- meditations -->
+    <section id="Mindfullness_header">
+        <h2 class="heading">Manage your Emotions 😌</h2>
+        <div class="container">
+            <div class="card" style="background-image: url('https://plus.unsplash.com/premium_photo-1671741996304-a50985148fea?q=80&w=1375&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+                <h2>Emotional Pain</h2>
+                <span class="language-tag">Hindi</span>
+                <p>Manage Your Emotions Series (हिन्दी)<br>Learn to manage 10 different emotions with this guided meditation series.</p>
+                <ul>
+                    <li>Better control over emotions</li>
+                    <li>Think clearly</li>
+                    <li>Take better decisions</li>
+                </ul>
+                <div class="audio-container">
+                    <audio id="audio1" src="https://v3.cdn.level.game/meditations/1682166282429_MYE+H+DAY+3_02.mp3"></audio>
+                    <button class="play-btn" onclick="playAudio('audio1')">▶</button>
+                </div>
+            </div>
+        
+            <div class="card" style="background-image: url('https://plus.unsplash.com/premium_photo-1671741996304-a50985148fea?q=80&w=1375&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+                <h2>Relieve Stress</h2>
+                <span class="language-tag">Hindi</span>
+                <p>Manage Your Emotions Series (हिन्दी)<br>Learn to manage 10 different emotions with this guided meditation series.</p>
+                <ul>
+                    <li>Better control over emotions</li>
+                    <li>Think clearly</li>
+                    <li>Take better decisions</li>
+                </ul>
+                <div class="audio-container">
+                    <audio id="audio2" src="https://v3.cdn.level.game/meditations/1682166282429_MYE+H+DAY+3_02.mp3"></audio>
+                    <button class="play-btn" onclick="playAudio('audio2')">▶</button>
+                </div>
+            </div>
+        
+            <div class="card" style="background-image: url('https://plus.unsplash.com/premium_photo-1671741996304-a50985148fea?q=80&w=1375&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+                <h2>Dealing Anxiety</h2>
+                <span class="language-tag">Hindi</span>
+                <p>Manage Your Emotions Series (हिन्दी)<br>Learn to manage 10 different emotions with this guided meditation series.</p>
+                <ul>
+                    <li>Better control over emotions</li>
+                    <li>Think clearly</li>
+                    <li>Take better decisions</li>
+                </ul>
+                <div class="audio-container">
+                    <audio id="audio3" src="https://v3.cdn.level.game/meditations/1682165301866_MYE+H+DAY+1_02.mp3"></audio>
+                    <button class="play-btn" onclick="playAudio('audio3')">▶</button>
+                </div>
+            </div>
+        </div>
+
+
+        <h2 class="heading">Om Mantra Series 🕉️</h2>
+        <div class="container">
+            <div class="card" style="background-image: url('https://plus.unsplash.com/premium_photo-1671741996304-a50985148fea?q=80&w=1375&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+                <h2>Day 1 : Meaning of Mantra</h2>
+                <span class="language-tag">English</span>
+                <p>Om Mantra Series Learn the basics of Mantra Meditation and Om Chanting with this 7-day beginners course. This ancient Indian technique of meditation involves meditating on sacred sounds to relax the mind.  Posture: Sit in a comfortable posture.  When to do it? Early Morning.  Benefits of this series:    Instantly reduces stress and anxiety   Improves overall wellbeing   Enhances focus and concentration</p>
+                <div class="audio-container">
+                    <audio id="audio1" src="https://v3.cdn.level.game/meditations/1687853912429_Om+Mantra+Meditation+Day+3_English+QC+GIF+17+Jun+2023.mp3" ></audio>
+                    <button class="play-btn" onclick="playAudio('audio1')">▶</button>
+                </div>
+            </div>
+        
+            <div class="card" style="background-image: url('https://plus.unsplash.com/premium_photo-1671741996304-a50985148fea?q=80&w=1375&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+                <h2>Day 2 : Science Behind Mantra </h2>
+                <div class="lang"><span class="language-tag">English</span></div>
+                <div class="content">
+                    <p>Om Mantra Series Learn the basics of Mantra Meditation and Om Chanting with this 7-day beginners course. This ancient Indian technique of meditation involves meditating on sacred sounds to relax the mind.  Posture: Sit in a comfortable posture.  When to do it? Early Morning.  Benefits of this series:    Instantly reduces stress and anxiety   Improves overall wellbeing   Enhances focus and concentration</p>
+                </div>
+                <div class="audio-container">
+                    <audio id="audio2" src="https://v3.cdn.level.game/meditations/1687853766197_Om+Mantra+Meditation+Day+2_English+QC+GIF+17+Jun+2023.mp3" ></audio>
+                    <button class="play-btn" onclick="playAudio('audio2')">▶</button>
+                </div>
+            </div>
+        
+            <div class="card" style="background-image: url('https://plus.unsplash.com/premium_photo-1671741996304-a50985148fea?q=80&w=1375&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+                <h2>Day 3 : Mantras and Spirituality </h2>
+                <span class="language-tag">English</span>
+                <p>Om Mantra Series Learn the basics of Mantra Meditation and Om Chanting with this 7-day beginners course. This ancient Indian technique of meditation involves meditating on sacred sounds to relax the mind.  Posture: Sit in a comfortable posture.  When to do it? Early Morning.  Benefits of this series:    Instantly reduces stress and anxiety   Improves overall wellbeing   Enhances focus and concentration</p>
+                <div class="audio-container">
+                    <audio id="audio2" src="https://v3.cdn.level.game/meditations/1687853766197_Om+Mantra+Meditation+Day+2_English+QC+GIF+17+Jun+2023.mp3"></audio>
+                    <button class="play-btn" onclick="playAudio('audio3')">▶</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="affirmations">
+
+        <!-- <h2 class="font-bold text-3xl pb-4">Why You Should Practice Daily Affirmations: A Scientific Perspective</h2>
+        When it comes to your mental health and personal growth, practicing affirmations on a daily basis can create a huge impact. The positive, empowering statements, when repeated on a daily basis, can make lasting changes to the way you think and feel. But why should affirmations be a part of your everyday routine? Let’s see why.
+        <div class="pt-16 block md:flex">
+            <div class="md:w-[50vw] md:p-4 md:pr-9  w-full m-auto">
+                <h2 class="md:font-bold md:text-2xl pb-1 font-semibold text-lg">1. Rewiring your brain</h2>
+                <div class="md:pl-6">Your brain is an incredibly adaptable organ, capable of forming new connections and pathways—a phenomenon known as neuroplasticity. When you practice daily affirmations, you're essentially training your brain to adopt a more positive perspective. Over time, these repeated positive statements can help rewire your brain, reducing the tendency towards negativity and enhancing your capacity for positivity.
+
+                </div>
+            </div>
+            <div class="p-3 pl-4 m-auto md:w-[50vw] w-full">
+                <img src="https://level.game/_next/static/media/affirmation-img2.e4dd338e.webp" alt="img">
+            </div>
+        </div> -->
+        <h2 class="title">Why You Should Practice Daily Affirmations: A Scientific Perspective</h2>
+    <p class="description">
+        When it comes to your mental health and personal growth, practicing affirmations on a daily basis can create a huge impact. 
+        The positive, empowering statements, when repeated on a daily basis, can make lasting changes to the way you think and feel. 
+        But why should affirmations be a part of your everyday routine? Let’s see why.
+    </p>
+
+    <div class="TRYcontainer">
+        <div class="text-section">
+            <h2>1. Rewiring your brain</h2>
+            <p>
+                Your brain is an incredibly adaptable organ, capable of forming new connections and pathways—a phenomenon known as neuroplasticity. 
+                When you practice daily affirmations, you're essentially training your brain to adopt a more positive perspective. 
+                Over time, these repeated positive statements can help rewire your brain, reducing the tendency towards negativity and enhancing your capacity for positivity.
+            </p>
+        </div>
+        <div class="image-section">
+            <img src="https://level.game/_next/static/media/affirmation-img2.e4dd338e.webp" alt="Affirmation Image">
+        </div>
+    </div>
+
+
+
+        <div class="TRYcontainer">
+        <div class="image-section">
+            <img src="https://level.game/_next/static/media/affirmation-img.d2c979fc.webp" alt="Affirmation Image">
+        </div>
+        
+        <div class="text-section">
+            <h2>2. Boosting Self-Esteem and Confidence</h2>
+            <p>
+                Negative self-talk and self-doubt can significantly undermine our self-esteem and confidence. 
+                Daily affirmations serve as a counterbalance to these negative thoughts. 
+                By consistently affirming your abilities and strengths, 
+                you can cultivate a more positive self-image and boost your confidence.
+            </p>
+        </div>
+    </div>
+
+
+    <div class="TRYcontainer">
+        <div class="text-section">
+            <h2>3. Reducing stress and anxiety</h2>
+            <p>
+                Stress and anxiety often stem from negative thought patterns and worries about the future.
+                 Affirmations can help anchor you in the present moment and promote a more positive outlook,
+                thereby reducing feelings of everyday stress and anxiety.
+            </p>
+        </div>
+        <div class="image-section">
+            <img src="https://level.game/_next/static/media/affirmation-img4.e7a6f12d.webp" alt="Affirmation Image">
+        </div>
+    </div>
+
+    <div class="TRYcontainer">
+        <div class="image-section">
+            <img src="https://level.game/_next/static/media/affirmation-img3.e20b7d04.webp" alt="Affirmation Image">
+        </div>
+        
+        <div class="text-section">
+            <h2>4. Promoting healthier habits</h2>
+            <p>
+                Affirmations can also play a role in promoting healthier habits.
+                 For instance, affirmations related to health and wellness ("I choose to nourish my body with healthy foods" 
+                 or "I enjoy exercising and keeping my body fit")
+                 can motivate you to make better decisions and help you stay committed to a healthier lifestyle
+            </p>
+        </div>
+    </div>
+
+    <div class="TRYcontainer">
+        <div class="text-section">
+            <h2>5. Improving Relationships</h2>
+            <p>
+                Words of affirmation can also enhance your relationships.
+                 Expressing positive sentiments and appreciation towards your loved ones can strengthen your bonds,
+                  improve communication, and foster a more positive environment.
+            </p>
+        </div>
+
+        <div class="image-section">
+            <img src="https://level.game/_next/static/media/affirmation-img5.9ada9d0e.webp" alt="Affirmation Image">
+        </div>
+    </div>
+
+    <div class="TRYcontainer">
+        <div class="image-section">
+            <img src="https://level.game/_next/static/media/affirmation-img6.a6b2db64.webp" alt="Affirmation Image">
+        </div>
+        
+        <div class="text-section">
+            <h2>6. Empowering Women</h2>
+            <p>
+                For women, daily affirmations can be particularly empowering.
+                 Affirmations that focus on self-worth, strength, and capability can help challenge
+                  societal expectations and internalized negative beliefs, fostering a sense of empowerment and self-belief. 
+                  You don’t have to invest a lot of time to incorporate daily affirmations into your routine.
+            </p>
+        </div>
+    </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

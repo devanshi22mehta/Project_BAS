@@ -173,56 +173,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // bmi meter
 
-function calculateBMI() {
-    let age = document.getElementById("age").value;
-    let height = document.getElementById("height").value;
-    let weight = document.getElementById("weight").value;
+const bmiText = document.getElementById("bmi");
+const descText = document.getElementById("desc");
+const form = document.querySelector("form");
 
-    if (!age || !height || !weight) {
-        alert("Please fill all fields");
-        return;
-    }
+form.addEventListener("submit", handleSubmit);
+form.addEventListener("reset", handleReset);
 
-    height = height / 100;  // Convert cm to meters
-    let bmi = (weight / (height * height)).toFixed(1);
-    let category = "";
-    let color = "";
-
-    if (bmi < 18.5) {
-        category = "Underweight";
-        color = "red";
-    } else if (bmi >= 18.5 && bmi < 25) {
-        category = "Normal";
-        color = "green";
-    } else if (bmi >= 25 && bmi < 30) {
-        category = "Overweight";
-        color = "yellow";
-    } else {
-        category = "Obesity";
-        color = "red";
-    }
-
-    let minWeight = (18.5 * height * height).toFixed(1);
-    let maxWeight = (25 * height * height).toFixed(1);
-    let bmiPrime = (bmi / 25).toFixed(1);
-    let ponderalIndex = (bmi / height).toFixed(1);
-
-    document.getElementById("bmi").innerText = bmi;
-    document.getElementById("category").innerText = category;
-    document.getElementById("category").style.color = color;
-    document.getElementById("healthy-weight").innerText = `${minWeight} - ${maxWeight}`;
-    document.getElementById("bmi-prime").innerText = bmiPrime;
-    document.getElementById("ponderal-index").innerText = ponderalIndex;
-    document.getElementById("result").style.display = "block";
-
-    // Update pointer rotation
-    let angle = (bmi / 40) * 180 - 90;
-    document.getElementById("pointer").style.transform = `rotate(${angle}deg)`;
+function handleReset() {
+  bmiText.textContent = 0;
+  bmiText.className = "";
+  descText.textContent = "N/A";
 }
 
-function clearFields() {
-    document.getElementById("age").value = "";
-    document.getElementById("height").value = "";
-    document.getElementById("weight").value = "";
-    document.getElementById("result").style.display = "none";
+function handleSubmit(e) {
+  e.preventDefault();
+
+  const weight = parseFloat(form.weight.value);
+  const height = parseFloat(form.height.value);
+
+  if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+    alert("Please enter a valid weight and height");
+    return;
+  }
+
+  const heightInMeters = height / 100; // cm -> m
+  const bmi = weight / Math.pow(heightInMeters, 2);
+  const desc = interpretBMI(bmi);
+
+  bmiText.textContent = bmi.toFixed(2);
+  bmiText.className = desc;
+  descText.innerHTML = `You are <strong>${desc}</strong>`;
+}
+
+function interpretBMI(bmi) {
+  if (bmi < 18.5) {
+    return "underweight";
+  } else if (bmi < 25) {
+    return "healthy";
+  } else if (bmi < 30) {
+    return "overweight";
+  } else {
+    return "obese";
+  }
 }

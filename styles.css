@@ -138,7 +138,7 @@ button.normal {
   /* students dashboard */
  /* profile*/
 
- #profile {
+ /* #profile {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -148,17 +148,48 @@ button.normal {
 
 .section__pic-container {
   display: flex;
-  height: 300px;
-  width: 300px;
+  height: 200px;
+  width: 200px;
   border-radius: 50%;
   margin: auto 0;
   background-color: #4b7da7;
 }
  
 #section__pic{
-  height: 300px;
-  width: 300px;
+  height: 200px;
+  width: 200px;
   border-radius: 50%;
+}
+
+.section__text {
+  align-self: center;
+  text-align: center;
+} */
+
+#profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  height: 60vh;
+}
+
+.section__pic-container {
+  display: flex;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #4b7da7;
+  align-items: center;
+  justify-content: center;
+}
+
+#section__pic {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 .section__text {
@@ -166,135 +197,141 @@ button.normal {
   text-align: center;
 }
 
-/* .upload-container {
-            background: rgb(186, 198, 238);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 100%;
-            margin: 50px auto;
-        }
+#fileInput {
+  display: none;
+}
 
-        .upload-box {
-            border: 2px dashed #b0bcd6;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            margin-bottom: 20px;
-        }
+/* upload section */
+#upload-header {
+  background-image: url(images/upload-banner.jpeg);
+  width: 100%;
+  height: 70vh;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  padding: 14px;
+}
 
-        .upload-box:hover {
-            background-color: #b7c2cc;
-        }
+#upload-header h2{
+  display: flex;
+  color: #000;
+  align-items: center;
+  justify-content: center;
+}
 
-        .file-list {
-            list-style: none;
-            padding: 0;
-        }
 
-        .file-item {
-            background: #f1f1f1;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+/* upload directs to page styling */
+.wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  width: 100%;
+  min-height: 100vh;
+  background: #709aca;
+  background: linear-gradient(22deg, #709aca 0%,#5691d5);
+}
 
-        .file-size {
-            font-size: 12px;
-            color: gray;
-        }
+.box{
+ max-width: 500px;
+ background: #fff;
+ padding: 30px;
+ width: 100%;
+ border-radius: 5px;  
+}
 
-        .file-error {
-            color: red;
-            font-size: 12px;
-        }
+.upload-area-title{
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+}
 
-        .btn-container {
-            display: flex;
-            justify-content: space-between;
-        } */
+.uploadlabel{
+  width: 100%;
+  min-height: 100px;
+  background: #18a7ff0d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 3px dashed #18a7ff82;
+  cursor: pointer;
+}
 
-        .upload-container {
-          border: 2px dashed #0088cc;
-          padding: 20px;
-          background-color: white;
-          width: 50%;
-          margin: 0 auto;
-          border-radius: 10px;
-      }
-      
-      .drop-area {
-          border: 2px dashed #0088cc;
-          padding: 30px;
-          margin-bottom: 10px;
-          cursor: pointer;
-          background-color: #f8f9fa;
-      }
-      
-      .drop-area p {
-          margin: 0;
-      }
-      
-      button {
-          background-color: #0088cc;
-          color: white;
-          padding: 10px 15px;
-          border: none;
-          cursor: pointer;
-          margin-top: 10px;
-      }
-      
-      .uploaded-files-container {
-          margin-top: 20px;
-      }
-      
-      .uploaded-files {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 10px;
-          max-height: 150px;
-          overflow: hidden;
-          transition: max-height 0.3s ease-in-out;
-      }
-      
-      .uploaded-file {
-          background: #ffffff;
-          padding: 10px;
-          border-radius: 5px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          width: 250px;
-          box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-      }
-      
-      .uploaded-file a {
-          text-decoration: none;
-          color: #0088cc;
-          flex-grow: 1;
-          text-align: left;
-          margin-left: 10px;
-      }
-      
-      .delete-btn {
-          background-color: red;
-          color: white;
-          border: none;
-          padding: 5px 8px;
-          cursor: pointer;
-          border-radius: 50%;
-      }
-      
-      .hidden {
-          display: none;
-      }
+.uploadlabel span{
+  font-size: 70px;
+  color: #18a7ff;
+}
+
+.uploadlabel p{
+  color: #18a7ff;
+  font-size: 20px;
+  font-weight: 800;
+  font-family: cursive;
+}
+
+.uploaded{
+  margin: 30px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #9cc4f1;
+}
+
+.showfilebox{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+  padding: 10px 15px;
+  box-shadow: #0000000d 0px 0px 0px 1px,
+  #d1d5db3d 0px 0px 0px 1px inset;
+}
+
+.showfilebox .left{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filetype{
+  background: #18a7ff;
+  color: #fff;
+  padding: 5px 15px;
+  font-size: 20px;
+  text-transform: capitalize;
+  font-weight: 700;
+  border-radius: 3px;
+}
+
+.left h3{
+  font-weight: 600;
+  font-size: 18px;
+  color: #292F42;
+  margin: 0; 
+}
+
+.right span{
+  background: #18a7ff;
+  color: #fff;
+  width: 25px;
+  height: 25px;
+  font-size: 25px;
+  line-height: 25px;
+  display: inline-block;
+  text-align: center;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+
          
 
-      /* our mission and vision styling */
+/* our mission and vision styling */
       .mission-vision {
         text-align: center;
         padding: 50px 20px;

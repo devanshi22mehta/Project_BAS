@@ -33,8 +33,8 @@
                 <li><a href="MentalWellness.html">Mindfullness</a></li>
                 <li><a href="CheckBMI.html">BMI</a></li>
                 <!-- <li><a href="Blog.html">Blog</a></li> -->
-                <li><a href="personalinformation.html">Profile</a></li>
-                <a href="Logout.html"><button class="normal">Logout</button></a>
+                <li><a href="personalinformation.php">Profile</a></li>
+                <a href="login.html"><button class="normal">Logout</button></a>
             </ul>
         </div>
     </section>
@@ -65,67 +65,27 @@
 
     <!-- personalisation -->
     <section id="profile">
-        <div class="section__pic-container">
-          <img id="section__pic" src="./images/profile.jpg" alt="profile picture" />
+        <div id="profile">
+            <div class="section__pic-container" onclick="document.getElementById('fileInput').click();">
+                <img id="section__pic" src="default-profile.png" alt="Profile Picture">
+            </div>
+            <div class="section__text">
+                <h2>Devanshi Mehta</h2>
+                <p>BTBTC22189</p>
+                <p>Shree Shanta Shoudh</p>
+            </div>
         </div>
-        <div class="section_text">
-          <h1 class="title">Devanshi Mehta</h1>
-          <p class="ID">BTBTC22189</p>
-          <p class="Hostel">Shree Shanta Shoudh</p>
-        </div>
+        <input type="file" id="fileInput" accept="image/*" onchange="previewImage(event)">
       </section>
 
       <!-- upload section -->
 
-      <div class="upload-container">
-        <h2>Drag & Drop Files Here</h2>
-        <div id="drop-area" class="drop-area">
-            <p>Drag & drop files here or <span id="file-label">click to upload</span></p>
-            <input type="file" id="file-input" multiple hidden>
-        </div>
-        <button id="upload-btn">Upload</button>
-    </div>
 
-    <div class="uploaded-files-container">
-        <h3>Uploaded Files</h3>
-        <div id="uploaded-files" class="uploaded-files"></div>
-        <button id="show-more-btn" class="hidden">Show More</button>
-    </div>
+    <section id="upload-header" class="blog-header">
+        <h2>Upload your prescriptions here!</h2>
+        <a href="upload.html"><button class="normal">Upload</button></a>
+    </section>
 
-
-    <!-- our mission and vision section -->
-
-    <!-- <section class="mission-vision">
-      <div class="container">
-          <h2 class="section-title">Our Mission & Vision</h2>
-          
-          <div class="content">
-              <div class="card">
-                  <h3>🌟 Our Mission</h3>
-                  <p>
-                      To empower individuals by providing innovative and accessible solutions that enhance well-being, foster growth, and promote sustainability.
-                  </p>
-              </div>
-
-              <div class="card">
-                  <h3>🚀 Our Vision</h3>
-                  <p>
-                      To be a global leader in innovation and technology, creating impactful solutions that transform lives and inspire the future.
-                  </p>
-              </div>
-          </div>
-      </div>
-  </section> -->
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Our Mission & Vision | Banasthali Aarogya Seva</title>
-      <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-  
       <section class="mission-vision">
           <div class="container">
               <h2 class="section-title">Our Mission & Vision</h2>
@@ -146,10 +106,7 @@
                   </div>
               </div>
           </div>
-      </section>
-  
-  </body>
-  </html>
+        </section>
   
 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

@@ -25,149 +25,57 @@ function startBreathing() {
 
 startBreathing();
 
-// take 1
-// const fileInput = document.getElementById('fileInput');
-// const fileList = document.getElementById('fileList');
 
-// fileInput.addEventListener('change', function () {
-//     fileList.innerHTML = ''; // Clear previous list
-//     Array.from(fileInput.files).forEach(file => {
-//         const listItem = document.createElement('li');
-//         listItem.classList.add('file-item');
-
-//         const fileSize = (file.size / 1024 / 1024).toFixed(2); // Convert size to MB
-
-//         listItem.innerHTML = `
-//             <div>
-//                 <strong>${file.name}</strong>
-//                 <div class="file-size">${fileSize} MB</div>
-//                 ${fileSize > 10 ? '<div class="file-error">File size exceeds 10 MB limit</div>' : ''}
-//             </div>
-//             <button class="btn btn-sm btn-danger" onclick="this.parentElement.remove();">✖</button>
-//         `;
-//         fileList.appendChild(listItem);
-//     });
-// });
-
-// take 2
-
-// function uploadFiles() {
-//     alert('Files uploaded successfully! (Mock function)');
-// }
-
-// async function uploadFile() {
-//     let formData = new FormData();           
-//     formData.append("file", fileupload.files[0]);
-//     await fetch('/upload.php', {
-//       method: "POST", 
-//       body: formData
-//     });    
-//     alert('The file has been uploaded successfully.');
-// }
-// take 3
-document.addEventListener("DOMContentLoaded", () => {
-    const dropArea = document.getElementById("drop-area");
-    const fileInput = document.getElementById("file-input");
-    const uploadBtn = document.getElementById("upload-btn");
-    const uploadedFilesContainer = document.getElementById("uploaded-files");
-    const showMoreBtn = document.getElementById("show-more-btn");
-
-    let files = [];
-    
-    // Drag & Drop Events
-    dropArea.addEventListener("dragover", (e) => {
-        e.preventDefault();
-        dropArea.classList.add("active");
-    });
-
-    dropArea.addEventListener("dragleave", () => {
-        dropArea.classList.remove("active");
-    });
-
-    dropArea.addEventListener("drop", (e) => {
-        e.preventDefault();
-        dropArea.classList.remove("active");
-        files.push(...e.dataTransfer.files);
-        updateFileList();
-    });
-
-    // Click to Upload
-    dropArea.addEventListener("click", () => fileInput.click());
-    fileInput.addEventListener("change", (e) => {
-        files.push(...e.target.files);
-        updateFileList();
-    });
-
-    // Upload Confirmation
-    uploadBtn.addEventListener("click", () => {
-        if (files.length === 0) {
-            alert("No files selected.");
-            return;
-        }
-
-        if (confirm("Are you sure you want to upload these files?")) {
-            uploadFiles();
-        }
-    });
-
-    // Upload Files
-    function uploadFiles() {
-        const formData = new FormData();
-        files.forEach((file) => formData.append("files[]", file));
-
-        fetch("upload.php", {
-            method: "POST",
-            body: formData,
-        })
-        .then((response) => response.text())
-        .then((data) => {
-            alert("Files uploaded successfully!");
-            files = [];
-            fetchFiles();
-        })
-        .catch((error) => console.error("Error:", error));
+//profile
+function previewImage(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById("section__pic").src = e.target.result;
+        };
+        reader.readAsDataURL(file);
     }
+}
 
-    // Fetch & Display Uploaded Files
-    function fetchFiles() {
-        fetch("fetch_files.php")
-            .then(response => response.json())
-            .then(data => {
-                uploadedFilesContainer.innerHTML = "";
-                data.forEach((file, index) => {
-                    const fileDiv = document.createElement("div");
-                    fileDiv.className = "uploaded-file";
-                    fileDiv.innerHTML = `
-                        <a href="uploads/${file}" target="_blank">${file}</a>
-                        <button class="delete-btn" onclick="deleteFile('${file}')">×</button>
-                    `;
-                    uploadedFilesContainer.appendChild(fileDiv);
-                });
+// upload documents
+window.addEventListener("load",()=>{
+    const input = document.getElementById("upload");
+    const filewrapper=document.getElementById("filewrapper");
 
-                if (data.length > 5) {
-                    uploadedFilesContainer.style.maxHeight = "150px";
-                    showMoreBtn.classList.remove("hidden");
-                } else {
-                    uploadedFilesContainer.style.maxHeight = "none";
-                    showMoreBtn.classList.add("hidden");
-                }
-            });
+    input.addEventListener("change",(e)=>{
+        let fileName = e.target.files[0].name;
+        let filetype = e.target.value.split(".").pop();
+        fileshow(fileName, filetype);
+    })
+ 
+    const fileshow=(fileName,filetype)=>{
+        const showfileboxElem = document.createElement("div");
+        showfileboxElem.classList.add("showfilebox");
+        const leftElem = document.createElement("div");
+        leftElem.classList.add("left")
+        const fileTypeElem = document.createElement("span");
+        fileTypeElem.classList.add("filetype");
+        fileTypeElem.innerHTML=filetype;
+        leftElem.append(fileTypeElem);
+        const filetitleElem = document.createElement("h3");
+        filetitleElem.innerHTML=fileName;
+        leftElem.append(filetitleElem);
+        showfileboxElem.append(leftElem);
+        const rightElem = document.createElement("div");
+        rightElem.classList.add("right");
+        showfileboxElem.append(rightElem);
+        const crossElem = document.createElement("span");
+        crossElem.innerHTML="&#215;";
+        rightElem.append(crossElem);
+        filewrapper.append(showfileboxElem); 
+
+        crossElem.addEventListener("click",()=>{
+            filewrapper.removeChild(showfileboxElem);
+        })
     }
+})
 
-    window.deleteFile = function(fileName) {
-        if (confirm("Are you sure you want to delete this file?")) {
-            fetch("delete_file.php?file=" + fileName)
-                .then(() => fetchFiles());
-        }
-    };
-
-    showMoreBtn.addEventListener("click", () => {
-        uploadedFilesContainer.style.maxHeight = "none";
-        showMoreBtn.classList.add("hidden");
-    });
-
-    fetchFiles();
-});
 
 
 

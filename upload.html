@@ -1,43 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>File Upload</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="wrapper">
-        <div class="box">
-            <div class="input-bx">
-                <h2 class="upload-area-title">Upload File</h2>
-                <form action="">
-                    <input type="file" id="upload" accept=".pdf,.doc,.docx" hidden>
-                    <label for="upload" class="uploadlabel">
-                        <span><i class="fa fa-cloud-upload"></i></span>
-                        <p>Click To Upload</p> 
-                    </label>
-                </form>
-            </div>
-          
-            <div id="filewrapper">
-                <h3 class="uploaded">Uploaded documents</h3>
-                <!-- <div class="showfilebox">
-                    <div class="left">
-                        <span class="filetype">Pdf</span>
-                        <h3>deva.pdf</h3>
-                    </div>
-                    <div class="right">
-                        <span>&#215;</span>
-                    </div>
-                </div> -->
-            </div>
-            
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      body {
+        background: #2a2a2a;
+        scroll-behavior: auto;
+      }
+      .wrapper {
+        width: 430px;
+        margin: 100px auto;
+        background: #fff;
+        border-radius: 5px;
+        padding: 30px;
+        box-shadow: 7px 7px 12px rgba(0, 0, 0, 0.05);
+      }
+      .wrapper header {
+        color: #2a2a2a;
+        font-size: 27px;
+        font-weight: 600;
+        text-align: center;
+      }
+      .wrapper form {
+        height: 167px;
+        display: flex;
+        cursor: pointer;
+        margin: 30px 0;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-radius: 5px;
+        border: 2px dashed #2a2a2a;
+      }
+      form :where(i, p) {
+        color: #2a2a2a;
+      }
+      form i {
+        font-size: 50px;
+      }
+      form p {
+        margin-top: 15px;
+        font-size: 16px;
+      }
 
-        </div>
+      section .row {
+        margin-bottom: 10px;
+        background: #e9f0ff;
+        list-style: none;
+        padding: 15px 20px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      section .row i {
+        color: #2a2a2a;
+        font-size: 30px;
+      }
+      section .details span {
+        font-size: 14px;
+      }
+      .progress-area .row .content {
+        width: 100%;
+        margin-left: 15px;
+      }
+      .progress-area .details {
+        display: flex;
+        align-items: center;
+        margin-bottom: 7px;
+        justify-content: space-between;
+      }
+      .progress-area .content .progress-bar {
+        height: 6px;
+        width: 100%;
+        margin-bottom: 4px;
+        background: #fff;
+        border-radius: 30px;
+      }
+      .content .progress-bar .progress {
+        height: 100%;
+        width: 0%;
+        background: #2a2a2a;
+        border-radius: inherit;
+      }
+      .uploaded-area {
+        max-height: 232px;
+        overflow-y: scroll;
+      }
+      .uploaded-area.onprogress {
+        max-height: 150px;
+      }
+      .uploaded-area::-webkit-scrollbar {
+        width: 0px;
+      }
+      .uploaded-area .row .content {
+        display: flex;
+        align-items: center;
+      }
+      .uploaded-area .row .details {
+        display: flex;
+        margin-left: 15px;
+        flex-direction: column;
+      }
+      .uploaded-area .row .details .size {
+        color: #404040;
+        font-size: 11px;
+      }
+      .uploaded-area i.fa-check {
+        font-size: 16px;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>File Uploader</header>
+      <form action="#">
+        <input class="file-input" type="file" name="file" hidden />
+        <i class="fa-solid fa-file-arrow-up"></i>
+        <p>Browse File to Upload</p>
+      </form>
+      <section class="progress-area"></section>
+      <section class="uploaded-area"></section>
     </div>
-<script src="script.js"></script>
-</body>
+
+    <script>
+     const userRole = "student"; // Change this dynamically based on session (student/doctor)
+
+const form = document.querySelector("form"),
+  fileInput = document.querySelector(".file-input"),
+  progressArea = document.querySelector(".progress-area"),
+  uploadedArea = document.querySelector(".uploaded-area");
+
+if (userRole === "student") {
+  form.addEventListener("click", () => {
+    fileInput.click();
+  });
+
+  fileInput.onchange = ({ target }) => {
+    let file = target.files[0];
+    if (file) {
+      let fileName = file.name;
+      if (fileName.length >= 12) {
+        let splitName = fileName.split(".");
+        fileName = splitName[0].substring(0, 13) + "... ." + splitName[1];
+      }
+      uploadFile(file, fileName);
+    }
+  };
+}
+
+function uploadFile(file, name) {
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", "php/upload.php");
+
+  xhr.upload.addEventListener("progress", ({ loaded, total }) => {
+    let fileLoaded = Math.floor((loaded / total) * 100);
+    let fileTotal = Math.floor(total / 1000);
+    let fileSize = fileTotal < 1024 ? fileTotal + " KB" : (loaded / (1024 * 1024)).toFixed(2) + " MB";
+
+    let uploadedHTML = `<li class="row uploaded-file">
+          <div class="content upload">
+            <i class="fas fa-file-alt"></i>
+            <div class="details">
+              <a href="php/uploads/${name}" class="pdf-link" target="_blank">${name}</a>
+              <span class="size">${fileSize}</span>
+            </div>
+          </div>
+          ${userRole === "student" ? `<i class="fas fa-times delete-file" data-file="${name}" title="Delete"></i>` : ""}
+        </li>`;
+
+    uploadedArea.insertAdjacentHTML("afterbegin", uploadedHTML);
+
+    // Delete functionality only for students
+    if (userRole === "student") {
+      document.querySelector(".delete-file").addEventListener("click", (e) => {
+        let fileName = e.target.getAttribute("data-file");
+        e.target.parentElement.remove();
+        deleteFileFromServer(fileName);
+      });
+    }
+  });
+
+  let data = new FormData();
+  data.append("file", file);
+  xhr.send(data);
+}
+
+// Delete file request (students only)
+function deleteFileFromServer(fileName) {
+  if (userRole !== "student") return; // Prevent doctors from deleting
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", "php/delete.php", true);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.send("file=" + fileName);
+}
+
+
+    </script>
+  </body>
 </html>
